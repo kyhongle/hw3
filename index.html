@@ -52,7 +52,8 @@
         "color": {"field":"EmployedVUnemploy", 
         "type":"nominal", 
         "scale":{"domain":["Employed","Unemployed"], 
-        "range":["#ffa500","#616161"], "type":"nominal"}}
+        "range":["#ffa500","#616161"], "type":"nominal"},
+        }
       },
       "layer": [
         {"mark": "line"},
@@ -91,7 +92,7 @@
         },
         {
           "encoding": {
-            // "text": {"type": "quantitative", "field": "Population"},
+            "text": {"type": "quantitative", "field": "Population"},
             "x": {"type": "temporal", "field": "Year"},
             "y": {"type": "quantitative", "field": "Population"}
           },
