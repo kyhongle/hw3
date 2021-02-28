@@ -29,94 +29,48 @@
     <script>
       // Assign the specification to a local variable vlSpec.
       var YourViz = {
-        // "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-        //   "description": "Unemployed vs Employed",
-        //   "data": {"url": "data/longley.csv"},
-        //   "mark": "line",
-        //   "encoding": {
-        //     "x": {"field": "Year", "type": "temporal"},
-        //     "y": {"field": "Population", "type": "quantitative"},
-        //     "color": {"field":"EmployedVUnemploy", "type":"nominal"},
-
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {
-    "url": "data/longley.csv"
-  },
-  "width": 400,
+  "width": 500,
   "height": 300,
+  
   "layer": [
     {
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal", "axis":{"title":"Economic Regression Timeline"}},
-        "y": {"field": "Population", "type": "quantitative"},
-        "color": {"field":"EmployedVUnemploy", 
-        "type":"nominal", 
-        "scale":{"domain":["Employed","Unemployed"], 
-        "title": "Employment",
-        "range":["#ffa500","#616161"], "type":"nominal"},
+      "data": {
+        "url": "data/chicagoWard.json",
+        "format": {
+          "type": "topojson"
         }
       },
-      "layer": [
-        {"mark": "line"},
-        {
-          "params": [{
-            "name": "label",
-            "select": {
-              "type": "point",
-              "encodings": ["x"],
-              "nearest": true,
-              "on": "mouseover"
-            }
-          }],
-          "mark": "point",
-          "encoding": {
-            "opacity": {
-              "condition": {
-                "param": "label",
-                "empty": false,
-                "value": 1
-              },
-              "value": 0
-            }
-          }
-        }
-      ]
+
+       "projection": {
+    "type": "albersUSA"
+  },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white"
+      }
     },
     {
-      "transform": [{"filter": {"param": "label", "empty": false}}],
-      "layer": [
-        {
-          "mark": {"type": "rule", "color": "gray"},
-          "encoding": {
-            "x": {"type": "temporal", "field": "Year", "aggregate": "min"}
-          }
+      "data": {
+        "url": "data/airports.csv"
+      },
+      "projection": {
+        "type": "albersUsa"
+      },
+      "mark": "circle",
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
         },
-        {
-          "encoding": {
-            "text": {"type": "quantitative", "field": "Population"},
-            "x": {"type": "temporal", "field": "Year"},
-            "y": {"type": "quantitative", "field": "Population"}
-          },
-          "layer": [
-            {
-              "mark": {
-                "type": "text",
-                "stroke": "black",
-                "strokeWidth": 2,
-                "align": "left",
-                "dx": 5,
-                "dy": -5
-              }
-            },
-            {
-              "mark": {"type": "text", "align": "left", "dx": 5, "dy": -5},
-              "encoding": {
-                "color": {"type": "nominal", "field": "EmployedVUnemployed"}
-              }
-            }
-          ]
-        }
-      ]
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {"value": 10},
+        "color": {"value": "steelblue"}
+      }
     }
   ]
 
