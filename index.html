@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>cy_Vega-Lite Bar Chart</title>
+    <title>Vega-Lite Tempate for Experiments</title>
     <meta charset="utf-8" />
 
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
-    <link rel="stylesheet" type="text/css" href="css/vegaLite_base.css">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.2"></script>
+    <link rel="stylesheet" href="css/vegaLite_base.css">
 
     <style media="screen">
       /* Add space between Vega-Embed links  */
       .vega-actions a {
         margin-right: 5px;
       }
-     
+
+   
+
     </style>
   </head>
   <body>
-    <h1>Homework three: Challenge One</h1>
+    <h1>Homework 3: Challenge Two</h1>
     <!-- Container for the visualization -->
-    <div  class="vis"></div>
+    <div id="vis"></div>
+ 
+
 
     <script>
       // Assign the specification to a local variable vlSpec.
-      var vlSpec = {
-         "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "description": "A simple bar chart with embedded data.",
-  "data": { "url": "./data/FoodDeliciousness.csv"},
-  "mark": "bar",
-  "encoding": {
-    "y": {"axis":{"title":"Food Type"},"field": "food", "type": "nominal",},
-    "x": {"axis":{"title":"Deliciousness Rating"},"field": "deliciousness", "type": "quantitative"},
-    "color":{"value":"#ccbcac"},
-    "tooltip": [{"field": "food", "type": "nominal"},{"field": "deliciousness", "type": "quantitative"}]
+      var YourViz = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "description": "Stock prices of 5 Tech Companies over Time.",
+          "data": {"url": "data/longley.csv"},
+          "mark": "line",
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {"field": "Armed.Forces", "type": "quantitative"},
+            // "color": {"field": "symbol", "type": "nominal"}
   }
+
+        //Cut and paste your viz here starting with the schema and ending right before the last curly brace
         
       };
 
+ 
+
+
+
+
       // Embed the visualization in the container with id `vis`
-      vegaEmbed('.vis', vlSpec);
+      vegaEmbed('#vis', YourViz);
+
+  
     </script>
   </body>
 </html>
