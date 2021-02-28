@@ -30,8 +30,9 @@
   "data": { "url": "./data/FoodDeliciousness.csv"},
   "mark": "bar",
   "encoding": {
-    "x": {"field": "food", "type": "nominal"},
-    "y": {"field": "deliciousness", "type": "quantitative"}
+    "y": {"axis":{"title":"Food Type"},"field": "food", "type": "nominal"},
+    "x": {"axis":{"title":"Deliciousness Rating"},"field": "deliciousness", "type": "quantitative"},
+    "color":{"field":"food", "scale":{"range":["#ccbcac"]}}
   }
         
       };
