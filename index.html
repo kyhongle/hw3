@@ -29,15 +29,93 @@
     <script>
       // Assign the specification to a local variable vlSpec.
       var YourViz = {
-        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-          "description": "Stock prices of 5 Tech Companies over Time.",
-          "data": {"url": "data/longley.csv"},
-          "mark": "line",
+        // "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        //   "description": "Unemployed vs Employed",
+        //   "data": {"url": "data/longley.csv"},
+        //   "mark": "line",
+        //   "encoding": {
+        //     "x": {"field": "Year", "type": "temporal"},
+        //     "y": {"field": "Population", "type": "quantitative"},
+        //     "color": {"field":"EmployedVUnemploy", "type":"nominal"},
+
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/longley.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "layer": [
+    {
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Population", "type": "quantitative"},
+        "color": {"field":"EmployedVUnemploy", "type":"nominal"}
+      },
+      "layer": [
+        {"mark": "line"},
+        {
+          "params": [{
+            "name": "label",
+            "select": {
+              "type": "point",
+              "encodings": ["x"],
+              "nearest": true,
+              "on": "mouseover"
+            }
+          }],
+          "mark": "point",
           "encoding": {
-            "x": {"field": "Year", "type": "temporal"},
-            "y": {"field": "Population", "type": "quantitative"},
-            "color": {"field":"EmployedVUnemploy", "type":"nominal"}
-  }
+            "opacity": {
+              "condition": {
+                "param": "label",
+                "empty": false,
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "transform": [{"filter": {"param": "label", "empty": false}}],
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "gray"},
+          "encoding": {
+            "x": {"type": "temporal", "field": "Year", "aggregate": "min"}
+          }
+        },
+        {
+          "encoding": {
+            "text": {"type": "quantitative", "field": "Population"},
+            "x": {"type": "temporal", "field": "Year"},
+            "y": {"type": "quantitative", "field": "Population"}
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "text",
+                "stroke": "white",
+                "strokeWidth": 2,
+                "align": "left",
+                "dx": 5,
+                "dy": -5
+              }
+            },
+            {
+              "mark": {"type": "text", "align": "left", "dx": 5, "dy": -5},
+              "encoding": {
+                "color": {"type": "nominal", "field": "EmployedVUnemployed"}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+  
 
         //Cut and paste your viz here starting with the schema and ending right before the last curly brace
         
