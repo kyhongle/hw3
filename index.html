@@ -47,9 +47,12 @@
   "layer": [
     {
       "encoding": {
-        "x": {"field": "Year", "type": "temporal", "axis":"Year"},
+        "x": {"field": "Year", "type": "temporal", "axis":{"title":"Year"}},
         "y": {"field": "Population", "type": "quantitative"},
-        "color": {"field":"EmployedVUnemploy", "type":"nominal"}
+        "color": {"field":"EmployedVUnemploy", 
+        "type":"nominal", 
+        "scale":{"domain":["Employed","Unemployed"], 
+        "range":["#ffa500","#616161"], "type":"nominal"}}
       },
       "layer": [
         {"mark": "line"},
