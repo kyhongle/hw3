@@ -47,7 +47,7 @@
   "layer": [
     {
       "encoding": {
-        "x": {"field": "Year", "type": "temporal"},
+        "x": {"field": "Year", "type": "temporal", "axis":"Year"},
         "y": {"field": "Population", "type": "quantitative"},
         "color": {"field":"EmployedVUnemploy", "type":"nominal"}
       },
@@ -83,12 +83,12 @@
         {
           "mark": {"type": "rule", "color": "gray"},
           "encoding": {
-            "x": {"type": "temporal", "field": "Year"}
+            "x": {"type": "temporal", "field": "Year", "aggregate": "min"}
           }
         },
         {
           "encoding": {
-            // "text": {"type": "quantitative", "field": "Population"},
+            "text": {"type": "quantitative", "field": "Population"},
             "x": {"type": "temporal", "field": "Year"},
             "y": {"type": "quantitative", "field": "Population"}
           },
