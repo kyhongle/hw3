@@ -20,7 +20,7 @@
     </style>
   </head>
   <body>
-    <h1>Challenge Three: Red Light Camera Locations</h1>
+    <h1>Challenge Four: Quantified Self</h1>
     <!-- Container for the visualization -->
     <div id="vis"></div>
  
@@ -37,7 +37,7 @@
   "mark": "line",
   "encoding": {
     "x": {"field": "Date", "type": "temporal"},
-    "y": {"field": "bedTime", "type": "quantitative"},
+    "y": {"field": "bedTime", "type": "quantitative", "scale":{"domain":[10,30]}},
     "color":{"value":"grey"}
   }
 
