@@ -37,8 +37,12 @@
   "mark": "line",
   "encoding": {
     "x": {"field": "Date", "type": "temporal"},
-    "y": {"field": "bedTime", "type": "quantitative", "scale":{"domain":[10,30]}},
-    "color":{"value":"grey"}
+    "y": {"field": "bedTime", "type": "quantitative", "scale":{"domain":[16,28]}},
+    "color":{"value":"pink"},
+
+    "tooltip": [
+      {"field": "Date", "type": "temporal"},
+      {"field": "bedTime", "type": "quantitative"}]
   }
 
   
