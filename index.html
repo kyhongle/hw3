@@ -30,49 +30,16 @@
       // Assign the specification to a local variable vlSpec.
       var YourViz = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 300,
+  "description": "BedTime",
+  "data": {"url": "data/SelfCleaned-latest.csv"},
   
-  "layer": [
-    {
-      "data": {
-        "url": "data/chicagoWard.json",
-        "format": {
-          "type": "topojson"
-        }
-      },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "BedTime", "type": "quantitative"}
+  }
 
-       "projection": {
-    "type": "albersUSA"
-  },
-      "mark": {
-        "type": "geoshape",
-        "fill": "lightgray",
-        "stroke": "white"
-      }
-    },
-    {
-      "data": {
-        "url": "data/red-light-camera-locations.csv"
-      },
-      "projection": {
-        "type": "albersUsa"
-      },
-      "mark": "circle",
-      "encoding": {
-        "longitude": {
-          "field": "LONGITUDE",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "LATITUDE",
-          "type": "quantitative"
-        },
-        "size": {"value": 15},
-        "color": {"field":"INTERSECTION", "type":"nominal"}
-      }
-    }
-  ]
+  
 
   
 
